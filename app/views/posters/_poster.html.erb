@@ -1,0 +1,29 @@
+<div id="<%= dom_id poster %>" class="max-w-sm rounded overflow-hidden shadow-lg border-solid border border-gray-200 relative">
+	<div class="text-center pb-10">
+  	  	<% if action_name != "show" %>
+  
+    		<% if poster.image.attached? %>
+    			<%= link_to (image_tag poster.image.variant(:thumb), :alt=> poster.name, :class=>"mx-auto my-2"), poster %>
+			<% else %>
+				<div class="uppercase font-bold text-gray-400 text-3xl p-2 text-center align-middle"><%= poster.name %></div>
+			<% end %>
+	
+			<div class="absolute bottom-2 w-full px-2 center">
+				<%= render partial: 'buttons', locals: {poster: poster} %>
+			</div>
+  
+  	  	<% else %>
+    
+      		<% if poster.image.attached? %>
+      			<%= image_tag poster.image, :alt=> poster.name %>
+  			<% else %>
+  				<%= poster.name %>
+  			<% end %>
+	
+			<div class="absolute bottom-2 w-full center">
+				<%= render partial: 'buttons', locals: {poster: poster} %>
+			</div>
+			
+  	  	<% end %>
+	</div>
+</div>

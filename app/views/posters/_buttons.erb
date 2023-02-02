@@ -1,0 +1,7 @@
+		<%= link_to poster_like_path(poster), class: "bg-pink-600 hover:bg-pink-800 text-pink-100 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
+			<%= render "layouts/icons/heart" %> <%= poster.score %>
+		<% end %>
+		
+		<%= link_to edit_poster_path(poster), class: "bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
+			<%= render "layouts/icons/wrench" %> Modifier
+		<% end %>
