@@ -1,11 +1,11 @@
 <div class="w-full">
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl text-gray-600">Votez pour votre affiche préférée</h1>
+    <h1 class="font-bold text-4xl text-gray-600 my-2">Votez pour votre affiche préférée</h1>
     <%= link_to 'New poster', new_poster_path, class: "py-1 px-3 mx-2 rounded-full hover:bg-blue-800 bg-blue-600 text-white block font-medium" %>
   </div>
   <div class="mb-2">
-	  <%= render partial: 'tag', :collection => ActsAsTaggableOn::Tag.all %>
+	  <%= render partial: 'tag', :collection => @tags %>
   </div>
   <div id="posters" class="min-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
     <%= render @posters %>

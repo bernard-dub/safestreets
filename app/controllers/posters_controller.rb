@@ -1,15 +1,23 @@
 class PostersController < ApplicationController
   before_action :set_poster, only: %i[ show edit update destroy like ]
+  before_action :set_likes, only: %i[ index tagged show ]
   before_action :authenticate_admin!, only: %i[ new create edit update destroy ]
   
   # GET /posters or /posters.json
   def index
-    @posters = Poster.all
+    @posters = Poster.all.order(score: :desc)
+    @tags = ActsAsTaggableOn::Tag.all.order(:name)
   end
   
   def tagged
-    @posters = Poster.tagged_with(params['tag'])
+    @posters = Poster.tagged_with(params['tag']).order(score: :desc)
+    @tags = ActsAsTaggableOn::Tag.all.order(:name)
     render "index"
+  end
+  
+  def delete_likes_cookies
+    cookies[:likes] = nil
+    redirect_to posters_url
   end
 
   # GET /posters/1 or /posters/1.json
@@ -26,8 +34,11 @@ class PostersController < ApplicationController
   end
   
   def like
+    likes = cookies[:likes].blank? ? [] : JSON.parse(cookies[:likes])
     respond_to do |format|
-      if @poster.update(score: @poster.score+1)
+      if !likes.include?(@poster.id) && @poster.update(score: @poster.score+1)
+        likes.append(@poster.id)
+        cookies[:likes] = JSON.generate(likes)
         format.html { redirect_to posters_url }
         format.json { render :list, status: :ok }
       else
@@ -79,6 +90,10 @@ class PostersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_poster
       @poster = Poster.find(params[:id])
+    end
+    
+    def set_likes
+      @likes = cookies[:likes].blank? ? [] : Poster.find(JSON.parse(cookies[:likes]))
     end
 
     # Only allow a list of trusted parameters through.

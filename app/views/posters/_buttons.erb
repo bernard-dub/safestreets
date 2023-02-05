@@ -1,5 +1,11 @@
-		<%= link_to poster_like_path(poster), class: "bg-pink-600 hover:bg-pink-800 text-pink-100 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
-			<%= render "layouts/icons/heart" %> <%= poster.score %>
+		<% if !@likes.include?(poster) %>
+			<%= link_to poster_like_path(poster), class: "bg-pink-600 hover:bg-pink-800 text-pink-100 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
+				<%= render "layouts/icons/heart" %> <%= poster.score %>
+			<% end %>
+		<% else %>
+			<div class="bg-pink-800 text-pink-100 font-bold py-1 px-3 rounded-full inline-flex items-center">
+				<%= render "layouts/icons/heart" %> <%= poster.score %>
+			</div>
 		<% end %>
 		
 		<% if admin_signed_in? %>
