@@ -2,6 +2,8 @@
 			<%= render "layouts/icons/heart" %> <%= poster.score %>
 		<% end %>
 		
-		<%= link_to edit_poster_path(poster), class: "bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
-			<%= render "layouts/icons/wrench" %> Modifier
+		<% if admin_signed_in? %>
+			<%= link_to edit_poster_path(poster), class: "bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
+				<%= render "layouts/icons/wrench" %> Modifier
+			<% end %>
 		<% end %>
