@@ -6,6 +6,11 @@ class PostersController < ApplicationController
   def index
     @posters = Poster.all
   end
+  
+  def tagged
+    @posters = Poster.tagged_with(params['tag'])
+    render "index"
+  end
 
   # GET /posters/1 or /posters/1.json
   def show
@@ -78,6 +83,6 @@ class PostersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def poster_params
-      params.require(:poster).permit(:name, :score, :image)
+      params.require(:poster).permit(:name, :score, :image, :place_list)
     end
 end

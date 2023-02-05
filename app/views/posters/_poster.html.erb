@@ -7,7 +7,11 @@
 			<% else %>
 				<div class="uppercase font-bold text-gray-400 text-3xl p-2 text-center align-middle"><%= poster.name %></div>
 			<% end %>
-	
+			
+			<div class="w-full px-2 py-2 center">
+				<%= render partial: 'tag', collection: poster.places %>
+			</div>
+			
 			<div class="absolute bottom-2 w-full px-2 center">
 				<%= render partial: 'buttons', locals: {poster: poster} %>
 			</div>

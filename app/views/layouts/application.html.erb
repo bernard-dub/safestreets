@@ -12,7 +12,8 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5">
+    <main class="container mx-auto mt-28 px-5 mb-15">
+		<%= image_tag 'en-tete' %>
 	    <% if notice.present? %>
 	      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
 	    <% end %>
@@ -20,12 +21,14 @@
 	      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
 	    <% end %>
 		
+		<%= yield %>
+		
 		<% if admin_signed_in? %>
 			<div>Admin : <%= current_admin.email %> | <div class="inline"><%= button_to "Déconnecter", destroy_admin_session_path, :method => :delete %></div></div>
 		<% else %>
 			<p><%= link_to "Admin", new_admin_session_path %></p>
 		<% end %>
-      <%= yield %>
+      
     </main>
   </body>
 </html>
