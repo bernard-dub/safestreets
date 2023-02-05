@@ -1,7 +1,7 @@
 class PostersController < ApplicationController
   before_action :set_poster, only: %i[ show edit update destroy like ]
   before_action :set_likes, only: %i[ index tagged show ]
-  before_action :authenticate_admin!, only: %i[ new create edit update destroy ]
+  before_action :authenticate_admin!, only: %i[ new create edit update destroy delete_likes_cookies ]
   
   # GET /posters or /posters.json
   def index
