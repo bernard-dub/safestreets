@@ -10,39 +10,21 @@ A simple Rails app to vote on some posters.
 		* https://www.digitalocean.com/community/tutorials/how-to-set-up-user-authentication-with-devise-in-a-rails-7-application
 	* done via devise
 	* estimated time : 3 hrs
-	* remaining todo : styling of login and links
+	* remaining todo : styling of login and links, prevent free sign up and access content this way
 * tagging
 	* done via acts_as_taggable_on
 	* can filter posters by clicking on a tag
 	* estimated time : 1hr
+	* remaining todo : render existing tags in update form, elegant editing
 * cookies for preventing vote from the same visitor
-	* done via CookieStore
+	* docs :
+		* done via CookieStore https://api.rubyonrails.org/v7.0.4.2/classes/ActionDispatch/Cookies.html
 	* custom route for resetting cookies for testing purposes, needs logged in admin
-	* no unlike button yet
 	* estimated time : 2hrs
+	* remaining todo : unlike button
 * voting via turbo
-	* https://www.hotrails.dev/turbo-rails/turbo-frames-and-turbo-streams
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+	* docs :
+		* https://www.hotrails.dev/turbo-rails/turbo-frames-and-turbo-streams
+* suggest a slogan
+	* via turbo
+	* minimal workflow processing

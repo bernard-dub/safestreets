@@ -26,9 +26,14 @@
 		<%= yield %>
 		
 		<% if admin_signed_in? %>
-			<div>Admin : <%= current_admin.email %> | <div class="inline"><%= button_to "Déconnecter", destroy_admin_session_path, :method => :delete %></div></div>
+			<div class="my-4">
+				Admin : <%= current_admin.email %>
+				<%= button_to "Déconnecter", destroy_admin_session_path, :method => :delete, form: {class: 'inline-block bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 rounded-full inline-flex items-center'} %>
+			</div>
 		<% else %>
-			<p><%= link_to "Admin", new_admin_session_path %></p>
+			<div class="my-4">
+				<%= link_to "Admin", new_admin_session_path, class: 'inline-block bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 rounded-full inline-flex items-center' %>
+			</div>
 		<% end %>
       
     </main>
