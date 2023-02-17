@@ -20,11 +20,16 @@ A simple Rails app to vote on some posters.
 	* docs :
 		* done via CookieStore https://api.rubyonrails.org/v7.0.4.2/classes/ActionDispatch/Cookies.html
 	* custom route for resetting cookies for testing purposes, needs logged in admin
-	* estimated time : 2hrs
-	* remaining todo : unlike button
+	* like/unlike toggle based on session cookie
+	* estimated time : 2.5hrs
+	* remaining todo : 
 * voting via turbo
 	* docs :
 		* https://www.hotrails.dev/turbo-rails/turbo-frames-and-turbo-streams
 * suggest a slogan
 	* via turbo
 	* minimal workflow processing
+	
+* tech
+	*remove _ds_store files from git repo :
+		* https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository

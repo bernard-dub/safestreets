@@ -1,5 +1,5 @@
 class PostersController < ApplicationController
-  before_action :set_poster, only: %i[ show edit update destroy like ]
+  before_action :set_poster, only: %i[ show edit update destroy like unlike]
   before_action :set_likes, only: %i[ index tagged show ]
   before_action :authenticate_admin!, only: %i[ new create edit update destroy delete_likes_cookies ]
   
@@ -38,6 +38,21 @@ class PostersController < ApplicationController
     respond_to do |format|
       if !likes.include?(@poster.id) && @poster.update(score: @poster.score+1)
         likes.append(@poster.id)
+        cookies[:likes] = JSON.generate(likes)
+        format.html { redirect_to posters_url }
+        format.json { render :list, status: :ok }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @poster.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  def unlike
+    likes = cookies[:likes].blank? ? [] : JSON.parse(cookies[:likes])
+    respond_to do |format|
+      if likes.include?(@poster.id) && @poster.update(score: @poster.score-1)
+        likes.delete(@poster.id)
         cookies[:likes] = JSON.generate(likes)
         format.html { redirect_to posters_url }
         format.json { render :list, status: :ok }

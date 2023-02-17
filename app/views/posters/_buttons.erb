@@ -3,9 +3,9 @@
 				<%= render "layouts/icons/heart" %> <%= poster.score %>
 			<% end %>
 		<% else %>
-			<div class="border border-pink-600 bg-pink-600 text-pink-100 font-bold py-1 px-3 rounded-full inline-flex items-center">
+			<%= link_to poster_unlike_path(poster), class: "border border-pink-600 bg-pink-600 text-pink-100 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
 				<%= render "layouts/icons/heart" %> <%= poster.score %>
-			</div>
+			<% end %>
 		<% end %>
 		
 		<% if admin_signed_in? %>
