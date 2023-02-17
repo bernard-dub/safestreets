@@ -9,8 +9,8 @@ A simple Rails app to vote on some posters.
 		* https://entrision.com/blog/ruby-on-rails-authentication/
 		* https://www.digitalocean.com/community/tutorials/how-to-set-up-user-authentication-with-devise-in-a-rails-7-application
 	* done via devise
-	* estimated time : 3 hrs
-	* remaining todo : styling of login and links, prevent free sign up and access content this way
+	* styling of login, prevent free sign up and access content this way
+	* estimated time : 4 hrs
 * tagging
 	* done via acts_as_taggable_on
 	* can filter posters by clicking on a tag

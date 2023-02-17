@@ -24,16 +24,18 @@
 	    <% end %>
 		
 		<%= yield %>
-		
+
 		<% if admin_signed_in? %>
-			<div class="my-4">
+			<div class="my-4 text-left">
 				Admin : <%= current_admin.email %>
 				<%= button_to "Déconnecter", destroy_admin_session_path, :method => :delete, form: {class: 'inline-block bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 rounded-full inline-flex items-center'} %>
 			</div>
 		<% else %>
-			<div class="my-4">
-				<%= link_to "Admin", new_admin_session_path, class: 'inline-block bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 rounded-full inline-flex items-center' %>
+			<% if controller_name != 'sessions' %>
+			<div class="my-4 text-left">
+				  <%= link_to "Admin", new_admin_session_path, class: 'inline-block bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 rounded-full inline-flex items-center' %>
 			</div>
+			<% end %>
 		<% end %>
       
     </main>
