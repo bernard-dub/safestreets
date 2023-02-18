@@ -1,12 +1,4 @@
-		<% if !@likes.include?(poster) %>
-			<%= link_to poster_like_path(poster), class: "border border-pink-600 bg-pink-100 hover:bg-pink-600 text-pink-600 hover:text-pink-100 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
-				<%= render "layouts/icons/heart" %> <%= poster.score %>
-			<% end %>
-		<% else %>
-			<%= link_to poster_unlike_path(poster), class: "border border-pink-600 bg-pink-600 text-pink-100 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
-				<%= render "layouts/icons/heart" %> <%= poster.score %>
-			<% end %>
-		<% end %>
+		<%= render partial: 'like_button',  locals: {poster: poster} %>
 		
 		<% if admin_signed_in? %>
 			<%= link_to edit_poster_path(poster), class: "bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
