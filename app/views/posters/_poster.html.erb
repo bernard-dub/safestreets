@@ -29,5 +29,10 @@
 			</div>
 			
   	  	<% end %>
+		<%= turbo_frame_tag "suggest" do %>
+		 <% if action_name == "create" %>
+		 	Merci ! Le slogan a été envoyé.
+		 <% end %>
+		<% end %>
 	</div>
 </div>

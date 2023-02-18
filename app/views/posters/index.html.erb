@@ -2,9 +2,15 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl text-gray-600 my-2">Votez pour votre affiche préférée</h1>
-    <%= link_to 'New poster', new_poster_path, class: "py-1 px-3 mx-2 rounded-full hover:bg-blue-800 bg-blue-600 text-white block font-medium" %>
+		<%= turbo_frame_tag "suggest" do %>
+    		<%#= link_to 'Proposez votre slogan', new_poster_path, class: "py-1 px-3 mx-2 rounded-full hover:bg-blue-800 bg-blue-600 text-white block font-medium" %>
+			<%= render partial: "suggest" %>
+		<% end %>
   </div>
   <div class="mb-2">
+	  <%= link_to posters_path, class: "bg-yellow-400 hover:bg-yellow-500 text-gray-600 font-bold font-size text-sm py-1 px-3 rounded-full inline-flex items-center" do %>
+		<%= render "layouts/icons/place" %> tout
+	  <% end %>
 	  <%= render partial: 'tag', :collection => @tags %>
   </div>
   <div id="posters" class="min-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

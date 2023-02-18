@@ -29,13 +29,19 @@ A simple Rails app to vote on some posters.
 	* docs :
 		* https://www.hotrails.dev/turbo-rails/turbo-frames-and-turbo-streams
 	* estimated time : 1hr
+	
+* suggest a slogan
+	* via turbo
+	* flowbite component to generate the modal :https://flowbite.com/docs/components/modal/
+	* estimated time : 2 hr
 
 ##todo
 
-* remaining todo : render existing tags in update form, elegant editing of tags
+* render existing tags in update form, elegant editing of tags
+
+* download poster in PDF
 		
 * suggest a slogan
-	* via turbo
 	* minimal workflow processing :
 		* let anyone submit a slogan
 		* moderation via admin

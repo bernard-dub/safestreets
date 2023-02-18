@@ -1,17 +1,16 @@
 class PostersController < ApplicationController
   before_action :set_poster, only: %i[ show edit update destroy like unlike]
   before_action :set_likes, only: %i[ index tagged show ]
+  before_action :set_tags, only: %i[ index tagged ]
   before_action :authenticate_admin!, only: %i[ new create edit update destroy delete_likes_cookies ]
   
   # GET /posters or /posters.json
   def index
     @posters = Poster.all.order(score: :desc)
-    @tags = ActsAsTaggableOn::Tag.all.order(:name)
   end
   
   def tagged
     @posters = Poster.tagged_with(params['tag']).order(score: :desc)
-    @tags = ActsAsTaggableOn::Tag.all.order(:name)
     render "index"
   end
   
@@ -109,6 +108,10 @@ class PostersController < ApplicationController
     
     def set_likes
       @likes = cookies[:likes].blank? ? [] : Poster.find(JSON.parse(cookies[:likes]))
+    end
+    
+    def set_tags
+      @tags = ActsAsTaggableOn::Tag.all.order(:name)
     end
 
     # Only allow a list of trusted parameters through.
