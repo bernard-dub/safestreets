@@ -4,8 +4,9 @@
     <h1 class="font-bold text-4xl text-gray-600 my-2">Votez pour votre affiche préférée</h1>
 		<%= turbo_frame_tag "suggest" do %>
 			<div id="confirm_submit"></div>
-    		<%= link_to 'Proposez votre slogan', new_poster_path, data:{turbo_frame: "modal"}, class: "py-1 px-3 mx-2 rounded-full hover:bg-blue-800 bg-blue-600 text-white block font-medium" %>
-			<%#= render partial: "suggest" %>
+    		<%= link_to new_poster_path, data:{turbo_frame: "modal"}, class: "py-1 px-3 mx-2 rounded-full hover:bg-blue-800 bg-blue-600 text-white inline-flex items-center font-medium" do %>
+				<%=render partial:"layouts/icons/talk"%> Proposez votre slogan
+			<% end %>
 		<% end %>
   </div>
   <div class="mb-2">
