@@ -5,5 +5,13 @@ class Poster < ApplicationRecord
   end
   before_create do
     self.score = 0
+    self.status = "submitted"
   end
+  
+  validates :name, presence: true
+  validates :email, presence: true
+  
+  scope :validated, -> { where(status: "validated") }
+  
+  STATUS = ["submitted","validated","rejected"]
 end

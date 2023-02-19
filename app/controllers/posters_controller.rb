@@ -1,12 +1,16 @@
 class PostersController < ApplicationController
   before_action :set_poster, only: %i[ show edit update destroy like unlike]
-  before_action :set_likes, only: %i[ index tagged show ]
+  before_action :set_likes, only: %i[ index tagged show create update ]
   before_action :set_tags, only: %i[ index tagged ]
-  before_action :authenticate_admin!, only: %i[ new create edit update destroy delete_likes_cookies ]
+  before_action :authenticate_admin!, only: %i[ edit update destroy delete_likes_cookies ]
   
   # GET /posters or /posters.json
   def index
-    @posters = Poster.all.order(score: :desc)
+    if current_admin
+      @posters = Poster.all.order(score: :desc)
+    else
+      @posters = Poster.validated.order(score: :desc)
+    end  
   end
   
   def tagged
@@ -68,6 +72,9 @@ class PostersController < ApplicationController
 
     respond_to do |format|
       if @poster.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace("confirm_submit", partial: "posters/confirm_submit"), notice: "Poster was successfully created."
+        end
         format.html { redirect_to poster_url(@poster), notice: "Poster was successfully created." }
         format.json { render :show, status: :created, location: @poster }
       else
@@ -81,6 +88,9 @@ class PostersController < ApplicationController
   def update
     respond_to do |format|
       if @poster.update(poster_params)
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.prepend("posters", partial: "posters/poster", locals: {poster: @poster})
+        end
         format.html { redirect_to poster_url(@poster), notice: "Poster was successfully updated." }
         format.json { render :show, status: :ok, location: @poster }
       else
@@ -116,6 +126,10 @@ class PostersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def poster_params
-      params.require(:poster).permit(:name, :score, :image, :place_list)
+      if current_admin
+        params.require(:poster).permit(:name, :email, :score, :image, :place_list, :status)
+      else
+        params.require(:poster).permit(:name, :email)
+      end
     end
 end
