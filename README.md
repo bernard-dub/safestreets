@@ -2,7 +2,7 @@
 
 A simple Rails app to vote on some posters.
 
-##features
+## done features
 
 * authenticate for updating content
 	* docs :
@@ -33,20 +33,23 @@ A simple Rails app to vote on some posters.
 * suggest a slogan
 	* via turbo
 	* flowbite component to generate the modal :https://flowbite.com/docs/components/modal/
-	* estimated time : 2 hr
-
-##todo
-
-* render existing tags in update form, elegant editing of tags
-
-* download poster in PDF
-		
-* suggest a slogan
+		* flowbite replaced by turbo/stimulus : https://www.youtube.com/watch?v=1QQ9j3z7NGw
 	* minimal workflow processing :
 		* let anyone submit a slogan
-		* moderation via admin
-		* admin can send a message to the submitter
+		* moderation via admin	
+	* estimated time : 5,5 hr
 
 * tech
 	*remove _ds_store files from git repo :
 		* https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository
+
+## todo features
+
+* render existing tags in update form, elegant editing of tags
+
+* edit modal positionning
+
+* download poster in PDF
+		
+* suggest a slogan
+		* admin can send a message to the submitter
