@@ -34,7 +34,7 @@
   
 	  <div class="my-5">
 	    <%= form.label :places, "Lieux" %>
-	    <%= form.text_field :place_list, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+	    <%= form.text_field :place_list, value: @poster.place_list.to_s, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
 	  </div>
 
 	  <div class="my-5">
@@ -44,6 +44,6 @@
   <% end %>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "Envoyer", class: "rounded-lg py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

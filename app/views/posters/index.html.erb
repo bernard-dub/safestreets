@@ -1,21 +1,28 @@
 <div class="w-full">
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl text-gray-600 my-2">Votez pour votre affiche préférée</h1>
-		<%= turbo_frame_tag "suggest" do %>
-			<div id="confirm_submit"></div>
-    		<%= link_to new_poster_path, data:{turbo_frame: "modal"}, class: "py-1 px-3 mx-2 rounded-full hover:bg-blue-800 bg-blue-600 text-white inline-flex items-center font-medium" do %>
-				<%=render partial:"layouts/icons/talk"%> Proposez votre slogan
-			<% end %>
-		<% end %>
-  </div>
-  <div class="mb-2">
-	  <%= link_to posters_path, class: "bg-yellow-400 hover:bg-yellow-500 text-gray-600 font-bold font-size text-sm py-1 px-3 rounded-full inline-flex items-center" do %>
-		<%= render "layouts/icons/place" %> tout
-	  <% end %>
-	  <%= render partial: 'tag', :collection => @tags %>
-  </div>
-  <div id="posters" class="min-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-    <%= render @posters %>
-  </div>
+	<div class="flex flex-wrap justify-between items-center content-start">
+		<!-- <div class="md:basis-8/12 basis-full"> -->
+		<div class="md:relative w-full">
+			<h1 class="font-bold text-4xl text-gray-600 my-2 md:mr-72">Votez pour votre affiche préférée</h1>
+			<p class="font-sm text-gray-700"><strong>La Commune de Profondeville prépare une campagne de sécurité routière ludique et personnalisée.</strong> Aidez-nous à préparer cette campagne! Votez pour vos affiches préférées en cliquant sur le coeur, ou <a href="<%= new_poster_path %>">proposez votre propre slogan</a>. S'il est retenu, il se retrouvera peut-être sur une affiche en bord de route!</p>
+	  	
+		  	<!-- <div class="basis-full md:basis-4/12 my-5 md:my-0"> -->
+			<div class="md:absolute md:top-2 md:right-0 w-full content-right">
+		  		<div id="confirm_submit" class="hidden"></div>
+				<%= link_to new_poster_path, data:{turbo_frame: "suggest_modal"}, class: "py-2 px-3 mx-2 w-72 rounded-lg hover:bg-orange-600 bg-orange-500 text-white text-lg md:absolute md:top-0 md:right-0 flex flex-nowrap items-center font-medium place-content-center" do %>
+					<%=render partial:"layouts/icons/talk"%> <div>Proposez votre slogan</div>
+				<% end %>
+				
+				<%= turbo_frame_tag :suggest_modal %>	
+	   	 	</div>
+		</div>
+	</div>
+  	<div class="mb-2">
+		<%= link_to posters_path, class: "bg-yellow-400 hover:bg-yellow-500 text-gray-600 font-bold font-size text-sm py-1 px-3 rounded-full inline-flex items-center" do %>
+			<%= render "layouts/icons/place" %> tout
+	  	<% end %>
+	  	<%= render partial: 'tag', :collection => @tags %>
+  	</div>
+  	<div id="posters" class="min-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    	<%= render @posters %>
+  	</div>
 </div>

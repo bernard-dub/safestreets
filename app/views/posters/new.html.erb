@@ -1,11 +1,22 @@
-<%= turbo_frame_tag :modal do %>
+<%= turbo_frame_tag :suggest_modal do %>
 	<div data-controller="turbo-modal" data-action="turbo:submit-end->turbo-modal#submitEnd">
-		<div class="p-5 bg-sky-300 absolute z-10 top-10 right-10 rounded-md break-words">
-			<h1 class="font-bold text-4xl text-sky-700">Proposez un slogan</h1>
+		<div class="p-5 bg-yellow-400 absolute top-10 right-0 rounded-md break-words font-sm text-gray-700 z-50 lg:w-10/12 lg:mx-4 lg:flex lg:flex-row drop-shadow-lg">
+			<div class="lg:basis-1/2 lg:mr-3">
+				<p class=""><strong>Vous débordez d'idées pour faire passer de manière créative le message de la sécurité routière sur nos routes profondevilloises? Envoyez-nous votre proposition de slogan !</strong> Si celui-ci est retenu, nous en ferons peut-être une affiche. Les propositions doivent respecter les consignes suivantes :
+					<ul class="list-disc ml-5">
+						<li class="">Votre slogan ne doit pas dépasser 7 à 8 mots maximum</li>
+						<li class="">Il doit faire référence à un village ou quartier de l'entité</li>
+					</ul>
+				</p>
+			</div>
+			<div class="lg:basis-1/2 lg:ml-3">
 
-			<%= render "form", poster: @poster %>
+				<%= render "form", poster: @poster %>
 
-			<%= link_to 'Annuler', posters_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+				<%= link_to 'Annuler', posters_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+			</div>
 		</div>
 	</div>
 <% end %>
+
+<!-- fixed z-10 top-10 -->

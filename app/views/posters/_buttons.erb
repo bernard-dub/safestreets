@@ -1,7 +1,11 @@
-		<%= render partial: 'like_button',  locals: {poster: poster} %>
+		<div class="inline">
+			<%= render partial: 'like_button',  locals: {poster: poster} %>
+		</div>
 		
 		<% if admin_signed_in? %>
-			<%= link_to edit_poster_path(poster), data: {turbo_frame: "modal"}, class: "bg-gray-200 hover:bg-gray-300 text-gray-600 font-medium py-1 px-3 rounded-full inline-flex items-center" do %>
-				<%= render "layouts/icons/wrench" %> Modifier
+			<%= link_to edit_poster_path(poster), data: {turbo_frame: "modal"}, class: "bg-sky-200 hover:bg-sky-300 text-sky-600 font-medium py-1 px-3 rounded-l-lg inline-flex items-center" do %>
+				<%= render "layouts/icons/wrench" %>
+			<% end %><%= button_to poster_path(poster.id), form: { data: { turbo_confirm: "OK pour supprimer #{poster.name}?" }}, :method => :delete, class: "bg-red-200 hover:bg-red-300 text-red-600 font-medium py-1 px-3 rounded-r-lg items-center", form_class: "inline" do %>
+				<%= render "layouts/icons/trash" %>
 			<% end %>
 		<% end %>

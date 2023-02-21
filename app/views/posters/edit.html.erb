@@ -1,12 +1,12 @@
 <%= turbo_frame_tag :modal do %>
 	<div data-controller="turbo-modal" data-action="turbo:submit-end->turbo-modal#submitEnd">
-		<div class="p-5 bg-sky-300 absolute z-10 top-10 right-10 rounded-md break-words">
-		  <h1 class="font-bold text-4xl">Editing poster</h1>
+		<div class="p-5 bg-sky-300 fixed z-10 top-10 right-10 rounded-md break-words">
+		  <h1 class="font-bold text-4xl">Modifier un poster</h1>
 
 		  <%= render "form", poster: @poster %>
 
-		  <%= link_to "Show this poster", @poster, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-		  <%= link_to "Back to posters", posters_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+		  <%= link_to "Détails", @poster, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+		  <%= link_to "Annuler", posters_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 		</div>
 	</div>
 <% end %>

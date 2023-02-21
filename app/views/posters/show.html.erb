@@ -3,7 +3,9 @@
     <%= render @poster %>
 	<div class="w-full center static">
     <div class="ml-20 my-2 flex text-center mx-auto items-center">
-      <%= button_to 'Supprimer', poster_path(@poster), method: :delete, class: "bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 mx-2 rounded-full inline-block" %>
+      <% if current_admin %>
+	  	<%= button_to 'Supprimer', poster_path(@poster), method: :delete, class: "bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 mx-2 rounded-full inline-block" %>
+	  <% end %>
     
     <%= link_to 'Retour', posters_path, class: "bg-gray-200 hover:bg-gray-300 text-gray-600 font-bold py-1 px-3 mx-2 rounded-full inline-block" %>
 	</div>

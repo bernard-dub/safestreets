@@ -37,10 +37,10 @@ A simple Rails app to vote on some posters.
 	* minimal workflow processing :
 		* let anyone submit a slogan
 		* moderation via admin	
-	* estimated time : 5,5 hr
+	* estimated time : 6,5 hr
 
 * tech
-	*remove _ds_store files from git repo :
+	* remove _ds_store files from git repo :
 		* https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository
 
 ## todo features
@@ -52,4 +52,4 @@ A simple Rails app to vote on some posters.
 * download poster in PDF
 		
 * suggest a slogan
-		* admin can send a message to the submitter
+	* admin can send a message to the submitter
