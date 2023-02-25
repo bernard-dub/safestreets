@@ -36,8 +36,16 @@ A simple Rails app to vote on some posters.
 		* flowbite replaced by turbo/stimulus : https://www.youtube.com/watch?v=1QQ9j3z7NGw
 	* minimal workflow processing :
 		* let anyone submit a slogan
-		* moderation via admin	
+		* moderation via admin
+		* admin can filter by status
 	* estimated time : 6,5 hr
+
+* download poster in PDF
+	* estimated time : 0,5 hr
+	
+* voting buttons appear on hevor of the pictures
+	* https://www.w3schools.com/howto/howto_css_image_overlay_title.asp
+	* estimated time : 0.5 hr
 
 * tech
 	* remove _ds_store files from git repo :
@@ -46,8 +54,6 @@ A simple Rails app to vote on some posters.
 ## todo features
 
 * render existing tags in update form, elegant editing of tags
-
-* download poster in PDF
 		
 * suggest a slogan
 	* admin can send a message to the submitter

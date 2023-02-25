@@ -1,42 +1,42 @@
-<div id="<%= dom_id poster %>" class="max-w-sm rounded overflow-hidden shadow-lg border-solid border border-gray-200 relative">
-	<div class="text-center pb-10">
-  	  	<% if action_name != "show" %>
-  
+<div id="<%= dom_id poster %>" class="max-w rounded overflow-hidden shadow-lg border-solid border border-gray-200 relative text-center">
+	<% if action_name != "show" %>
+  		<div class="group relative">
     		<% if poster.image.attached? %>
 				<% if poster.pdf.attached? %>
-    				<%= link_to (image_tag poster.image.variant(:thumb), :alt=> poster.name, :class=>"mx-auto my-2"), url_for(poster.pdf), :target => "_blank" %>
+					<%= link_to (image_tag poster.image, :alt=> poster.name, :class=>"mx-auto my-2"), url_for(poster.pdf), :target => "_blank" %>
 				<% else %>
-					<%= image_tag poster.image.variant(:thumb), :class=>"mx-auto my-2" %>
+					<%= image_tag poster.image, :class=>"mx-auto my-2" %>
 				<% end %>
 			<% else %>
-				<div class="uppercase font-bold text-gray-400 text-3xl p-2 text-center align-middle"><%= poster.name %></div>
+				<div class="uppercase font-bold text-gray-400 text-3xl p-2 pb-20 h-full text-center align-middle">
+					<%= poster.name %>
+				</div>
 			<% end %>
-			
-			<div class="w-full mb-4 px-2 py-2 center">
-				<%= render partial: 'tag', collection: poster.places %>
-			</div>
-			
-			<div class="absolute bottom-2 w-full px-2 center">
+			<div class="opacity-100 group-hover:opacity-100 absolute right-2 -bottom-8 bg-white/0 rounded-lg w-full container mx-auto pb-3">
 				<%= render partial: 'buttons', locals: {poster: poster} %>
+				<!-- <%= link_to poster_like_path(poster), class: "" do %>
+					<%#= render partial: 'layouts/icons/heart_big' %>
+				<% end %> -->
 			</div>
-  
-  	  	<% else %>
+		</div>
+		
+		
+		<div class="w-full px-2 py-2 center">
+			<%= render partial: 'tag', collection: poster.places %>
+		</div>
+		
+
+  	<% else %>
     
-      		<% if poster.image.attached? %>
-      			<%= image_tag poster.image, :alt=> poster.name, :class=>"mb-4" %>
-  			<% else %>
-  				<%= poster.name %>
-  			<% end %>
-	
-			<div class="absolute bottom-2 w-full content-center">
-				<%= render partial: 'buttons', locals: {poster: poster} %>
-			</div>
-			
-  	  	<% end %>
-		<%= turbo_frame_tag "suggest" do %>
-		 <% if action_name == "create" %>
-		 	Merci ! Le slogan a été envoyé.
-		 <% end %>
+  		<% if poster.image.attached? %>
+  			<%= image_tag poster.image, :alt=> poster.name, :class=>"mb-4" %>
+		<% else %>
+			<%= poster.name %>
 		<% end %>
-	</div>
+
+		<div class="absolute bottom-2 w-full content-center">
+			<%= render partial: 'buttons', locals: {poster: poster} %>
+		</div>
+		
+  	<% end %>
 </div>
