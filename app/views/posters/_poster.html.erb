@@ -3,7 +3,11 @@
   	  	<% if action_name != "show" %>
   
     		<% if poster.image.attached? %>
-    			<%= link_to (image_tag poster.image.variant(:thumb), :alt=> poster.name, :class=>"mx-auto my-2"), poster %>
+				<% if poster.pdf.attached? %>
+    				<%= link_to (image_tag poster.image.variant(:thumb), :alt=> poster.name, :class=>"mx-auto my-2"), url_for(poster.pdf), :target => "_blank" %>
+				<% else %>
+					<%= image_tag poster.image.variant(:thumb), :class=>"mx-auto my-2" %>
+				<% end %>
 			<% else %>
 				<div class="uppercase font-bold text-gray-400 text-3xl p-2 text-center align-middle"><%= poster.name %></div>
 			<% end %>

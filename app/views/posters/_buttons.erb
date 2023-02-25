@@ -1,6 +1,11 @@
 		<div class="inline">
 			<%= render partial: 'like_button',  locals: {poster: poster} %>
 		</div>
+		<% if poster.pdf.attached? %>
+			<%= link_to url_for(poster.pdf), target: "_blank", alt: "Affichette imprimable", class: "border hover:ring-2 hover:ring-offset-0 ring-sky-600 border-sky-600 bg-sky-600 text-sky-100 mt-4 mb-2 font-bold py-1 px-3 rounded-full inline-flex items-center" do %>
+				<%= render "layouts/icons/download" %>
+			<% end %>
+		<% end %>
 		
 		<% if admin_signed_in? %>
 			<%= link_to edit_poster_path(poster), data: {turbo_frame: "modal"}, class: "bg-sky-200 hover:bg-sky-300 text-sky-600 font-medium py-1 px-3 rounded-l-lg inline-flex items-center" do %>

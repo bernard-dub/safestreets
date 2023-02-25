@@ -47,8 +47,6 @@ A simple Rails app to vote on some posters.
 
 * render existing tags in update form, elegant editing of tags
 
-* edit modal positionning
-
 * download poster in PDF
 		
 * suggest a slogan

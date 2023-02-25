@@ -3,6 +3,8 @@ class Poster < ApplicationRecord
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [200, 200]
   end
+  has_one_attached :pdf
+  
   before_create do
     self.score = 0
     self.status = "submitted"

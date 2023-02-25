@@ -1,13 +1,13 @@
 class PostersController < ApplicationController
-  before_action :set_poster, only: %i[ show edit update destroy like unlike]
-  before_action :set_likes, only: %i[ index tagged show create update ]
-  before_action :set_tags, only: %i[ index tagged ]
-  before_action :authenticate_admin!, only: %i[ edit update destroy delete_likes_cookies ]
+  before_action :set_poster, only: %i[ show edit update destroy like unlike ]
+  before_action :set_likes, only: %i[ index tagged show create update status ]
+  before_action :set_tags, only: %i[ index tagged status ]
+  before_action :authenticate_admin!, only: %i[ edit update destroy delete_likes_cookies status ]
   
   # GET /posters or /posters.json
   def index
     if current_admin
-      @posters = Poster.all.order(score: :desc)
+      @posters = Poster.all.order(updated_at: :desc)
     else
       @posters = Poster.validated.order(score: :desc)
     end  
@@ -15,6 +15,11 @@ class PostersController < ApplicationController
   
   def tagged
     @posters = Poster.tagged_with(params['tag']).order(score: :desc)
+    render "index"
+  end
+  
+  def status
+    @posters = Poster.where(status: params['status']).order(score: :desc)
     render "index"
   end
   
@@ -30,6 +35,10 @@ class PostersController < ApplicationController
   # GET /posters/new
   def new
     @poster = Poster.new
+    if current_admin
+      @poster.email = current_admin.email
+      @poster.status = 'validated'
+    end
   end
 
   # GET /posters/1/edit
@@ -74,6 +83,7 @@ class PostersController < ApplicationController
       if @poster.save
         format.turbo_stream do
           render turbo_stream: turbo_stream.replace("confirm_submit", partial: "posters/confirm_submit"), notice: "Poster was successfully created."
+          render turbo_stream: turbo_stream.prepend("posters", partial: "posters/poster", locals: {poster: @poster}) if current_admin
         end
         format.html { redirect_to poster_url(@poster), notice: "Poster was successfully created." }
         format.json { render :show, status: :created, location: @poster }
@@ -117,7 +127,7 @@ class PostersController < ApplicationController
     end
     
     def set_likes
-      @likes = cookies[:likes].blank? ? [] : Poster.find(JSON.parse(cookies[:likes]))
+      @likes = cookies[:likes].blank? ? [] : (JSON.parse(cookies[:likes]))
     end
     
     def set_tags
@@ -127,7 +137,7 @@ class PostersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def poster_params
       if current_admin
-        params.require(:poster).permit(:name, :email, :score, :image, :place_list, :status)
+        params.require(:poster).permit(:name, :email, :score, :image, :pdf, :place_list, :status)
       else
         params.require(:poster).permit(:name, :email)
       end
