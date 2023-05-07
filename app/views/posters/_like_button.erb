@@ -1,10 +1,10 @@
 	<%= turbo_frame_tag "poster_like_#{poster.id}" do %>
 		<% if !@likes.include?(poster.id) %>
-			<%= link_to poster_like_path(poster), class: "border hover:ring-2 hover:ring-offset-0 ring-pink-600 border-pink-600 bg-pink-100 text-pink-600 mt-4 mb-2 font-bold py-1 px-3 rounded-full inline-flex items-center text-4xl lg:text-2xl" do %>
+			<%= link_to poster_like_path(poster), class: "border hover:ring-2 hover:ring-offset-0 ring-pink-600 border-pink-600 bg-pink-100 text-pink-600 mt-1 mb-2 font-bold py-1 px-3 rounded-full inline-flex items-center text-4xl lg:text-2xl" do %>
 				<%= render "layouts/icons/heart" %> <%= poster.score %>
 			<% end %>
 		<% else %>
-			<%= link_to poster_unlike_path(poster), class: "border hover:ring-2 hover:ring-offset-0 ring-pink-600 border-pink-600 bg-pink-600 text-pink-100 mt-4 mb-2 font-bold py-1 px-3 rounded-full inline-flex items-center text-4xl lg:text-2xl" do %>
+			<%= link_to poster_unlike_path(poster), class: "border hover:ring-2 hover:ring-offset-0 ring-pink-600 border-pink-600 bg-pink-600 text-pink-100 mt-1 mb-2 font-bold py-1 px-3 rounded-full inline-flex items-center text-4xl lg:text-2xl" do %>
 				<%= render "layouts/icons/heart" %> <%= poster.score %>
 			<% end %>
 		<% end %>
