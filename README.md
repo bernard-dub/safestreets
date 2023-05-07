@@ -54,6 +54,10 @@ A simple Rails app to vote on some posters.
 ## todo features
 
 * render existing tags in update form, elegant editing of tags
+
+* render existing picture in update/create form, elegant editing of images
 		
 * suggest a slogan
 	* admin can send a message to the submitter
+	
+* cookie consent banner
