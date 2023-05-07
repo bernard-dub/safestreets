@@ -43,14 +43,19 @@ A simple Rails app to vote on some posters.
 * download poster in PDF
 	* estimated time : 0,5 hr
 	
-* voting buttons appear on hevor of the pictures
+* voting buttons appear on hover of the pictures
 	* https://www.w3schools.com/howto/howto_css_image_overlay_title.asp
 	* estimated time : 0.5 hr
 
 * tech
 	* remove _ds_store files from git repo :
 		* https://stackoverflow.com/questions/107701/how-can-i-remove-ds-store-files-from-a-git-repository
-
+	* move db to postgresql
+		* http://joshuapaling.com/blog/2013/08/06/dump-sqlite-database-in-rails.html
+		* https://medium.com/geekculture/ruby-on-rails-switch-from-sqlite3-to-postgres-590009645c25
+		* https://stackoverflow.com/questions/31079819/string-vs-text-using-rails-3-2-and-postgres-should-i-always-just-use-text
+	* upgrade to a heroku-compatible version of ruby
+	
 ## todo features
 
 * render existing tags in update form, elegant editing of tags
@@ -60,4 +65,6 @@ A simple Rails app to vote on some posters.
 * suggest a slogan
 	* admin can send a message to the submitter
 	
-* cookie consent banner
+* cookie consent banner : no need, see 
+
+* move database to pg
