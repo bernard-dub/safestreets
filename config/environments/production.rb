@@ -90,4 +90,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  # https://devcenter.heroku.com/articles/active-storage-on-heroku
+  config.active_storage.service = :amazon
 end
