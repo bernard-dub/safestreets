@@ -79,4 +79,4 @@ gem 'devise'
 gem 'acts-as-taggable-on', '~> 9.0'
 
 # https://devcenter.heroku.com/articles/active-storage-on-heroku
-gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3", require: false 
