@@ -54,7 +54,15 @@ A simple Rails app to vote on some posters.
 		* http://joshuapaling.com/blog/2013/08/06/dump-sqlite-database-in-rails.html
 		* https://medium.com/geekculture/ruby-on-rails-switch-from-sqlite3-to-postgres-590009645c25
 		* https://stackoverflow.com/questions/31079819/string-vs-text-using-rails-3-2-and-postgres-should-i-always-just-use-text
+		* estimated time : 1 hr
 	* upgrade to a heroku-compatible version of ruby
+		* upgraded to 3.1.3 which is closest rbenv version compatible with 3.1.4
+		* 3.2.2 not compatible with shipped version of nokogiri (needs under 3.2)
+		* estimated time : 2 hr
+	* uploaded images and files in heroku not kept after deploy
+		* using bucketeer add-on
+		* https://devcenter.heroku.com/articles/active-storage-on-heroku
+		* estimated time : 1 hr
 	
 ## todo features
 
@@ -66,5 +74,3 @@ A simple Rails app to vote on some posters.
 	* admin can send a message to the submitter
 	
 * cookie consent banner : no need, see 
-
-* move database to pg

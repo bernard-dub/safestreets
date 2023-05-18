@@ -2,9 +2,8 @@
 	<div class="flex flex-wrap justify-between items-center content-start">
 		<!-- <div class="md:basis-8/12 basis-full"> -->
 		<div class="md:relative w-full">
-			<h1 class="font-bold text-4xl text-gray-600 my-2 md:mr-72">Votez pour votre affiche préférée</h1>
-			<p class="font-sm text-gray-700"><strong>La Commune de Profondeville prépare une campagne de sécurité routière ludique et personnalisée.</strong> Aidez-nous à préparer cette campagne! Votez pour vos affiches préférées en cliquant sur le coeur, ou <a href="<%= new_poster_path %>">proposez votre propre slogan</a>. S'il est retenu, il se retrouvera peut-être sur une affiche en bord de route!</p>
-	  	
+			<h1 class="font-bold text-4xl text-gray-600 my-2 md:mr-72">Votre campagne de sécurité routière</h1>
+			<p class="font-sm text-gray-700"><strong>La Commune de Profondeville lance une campagne de sécurité routière ludique et personnalisée.</strong> Aidez-nous en participant à cette campagne! </p>
 		  	<!-- <div class="basis-full md:basis-4/12 my-5 md:my-0"> -->
 			<div class="md:absolute md:top-2 md:right-0 w-full content-right">
 		  		<div id="confirm_submit" class="hidden"></div>
@@ -14,6 +13,20 @@
 				
 				<%= turbo_frame_tag :suggest_modal %>	
 	   	 	</div>
+		</div>
+	</div>
+	<div class="min-w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
+		<div class="max-w rounded overflow-hidden relative">
+			<h2 class="font-bold text-3xl text-gray-600 text-center">Proposez</h2>
+			<p>Imaginez et <a href="<%= new_poster_path %>">proposez votre propre slogan</a>. Notre graphiste en fera une belle affiche à proposer au vote.</p>
+		</div>
+		<div class="max-w rounded overflow-hidden relative">
+			<h2 class="font-bold text-3xl text-gray-600 text-center">Votez</h2>
+			<p>Votez pour vos affiches préférées en cliquant sur le coeur. Les meilleures seront imprimées sur des panneaux et placées au bord des routes.</p>
+		</div>
+		<div class="max-w rounded overflow-hidden relative">
+			<h2 class="font-bold text-3xl text-gray-600 text-center">Imprimez</h2>
+			<p>Faites passer le message ! Téléchargez et imprimez votre affiche favorite en cliquant sur une image, et affichez-là à votre fenêtre.</p>
 		</div>
 	</div>
   	<div class="mb-2">
